@@ -10,25 +10,36 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let eggTimes = ["Soft": 5, "Medium":7, "Hard": 12]
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    let eggTimes = ["Soft": 300, "Medium":420, "Hard": 720]
+    
     let softTime = 5
     let mediumTime = 7
     let hardTime = 12
     
+    var secondRemaining = 60
+    
+    var timer = Timer()
+    
     @IBAction func hardnessSelected(_ sender: UIButton) {
-        let hardness = sender.currentTitle
+        let hardness = sender.currentTitle!
         
-        switch hardness {
-        case "Soft" :
-            print(softTime)
-        case "Medium":
-            print(mediumTime)
-        case "Hard":
-            print(hardTime)
-            
-        default:
-            print("this is error value")
-        }
+        timer.invalidate()
         
+        secondRemaining = eggTimes[hardness]!
+        
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
+    
+    @objc func updateTimer() {
+        if secondRemaining > 0 {
+            print("\(secondRemaining) seconds.")
+            secondRemaining -= 1
+            
+        } else {
+            titleLabel.text = "Done!"
+        }
+    }
+    
 }
