@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -121,6 +122,20 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJN-th-c5K" userLabel="Timer View">
                                         <rect key="frame" x="0.0" y="571.5" width="374" height="246.5"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="dcc-WH-JGH">
+                                                <rect key="frame" x="0.0" y="123" width="374" height="2.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="I4L-k8-pq4"/>
+                                                </constraints>
+                                                <color key="progressTintColor" red="0.60905373100000004" green="0.1097317114" blue="0.12531748409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="trackTintColor" systemColor="opaqueSeparatorColor"/>
+                                            </progressView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="dcc-WH-JGH" secondAttribute="trailing" id="5jZ-Lk-Spb"/>
+                                            <constraint firstItem="dcc-WH-JGH" firstAttribute="leading" secondItem="nJN-th-c5K" secondAttribute="leading" id="bIa-M2-g88"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -135,6 +150,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="progressBar" destination="dcc-WH-JGH" id="Ssr-f8-XKk"/>
                         <outlet property="titleLabel" destination="XLm-5r-pSP" id="kU0-rs-I6f"/>
                     </connections>
                 </viewController>
@@ -147,5 +163,8 @@
         <image name="hard_egg" width="287.5" height="366"/>
         <image name="medium_egg" width="288" height="363"/>
         <image name="soft_egg" width="287" height="365"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
